@@ -34,19 +34,19 @@ makeCacheMatrix <- function(x = matrix()) {
       ## input is not matrix thro a message and do nothing
       
       message( "Input is not a matrix. Please check your input")
-      return
+
+    } else {
+    
+      ## as per the assignment isntructions here we are 
+      ## assuming that the given matrix is invertible
+    
+      x <<- y
+    
+      ## every time the matrix is set with new matrix 
+      ## reset matrix inverse value to NULL so it will be recaluated
+      minv <<- NULL
+    
     }
-    
-    ## as per the assignment isntructions here we are 
-    ## assuming that the given matrix is invertible
-    
-    x <<- y
-    
-    ## every time the matrix is set with new matrix 
-    ## reset matrix inverse value to NULL so it will be recaluated
-    minv <<- NULL
-    
-    
   }
   
   ## the following function simply returns the cached matrix
@@ -55,13 +55,14 @@ makeCacheMatrix <- function(x = matrix()) {
   ## the following function set the value of inverse matrix with new value
   setsolve <- function(min) {
     ## before setting with a new matrix inverse check if it a matrix or not
-    if (!is.matrix(min){
+    if (!is.matrix(min)){
       ##send error message and do nothing
       message ("input is not a matrix. Please check")
-      return 
-    } 
-    minv <<- min
-    
+       
+    } else {
+      ## ok now set the value for inverse matrix
+      minv <<- min
+    }
   }  
   
   ## the follwoing fucntion retruns the cached inverse matrix
@@ -103,7 +104,5 @@ cacheSolve <- function(x, ...) {
   x$setsolve(minv)
   x
   minv
-  
-  
   
 }
